@@ -1,0 +1,521 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 215 30% 22%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 30% 22%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 30% 22%;
+
+    --primary: 343 95% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 206 55% 33%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 343 95% 95%;
+    --accent-foreground: 343 95% 65%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 343 95% 65%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* #0e1629 converted to HSL format */
+    --background: 225 65% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 225 65% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 225 65% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 343 95% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 206 55% 33%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 225 65% 16%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 343 95% 25%;
+    --accent-foreground: 343 95% 85%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 225 65% 16%;
+    --input: 225 65% 16%;
+    --ring: 343 95% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-bold;
+  }
+  p,
+  span,
+  div,
+  a,
+  button,
+  input,
+  textarea {
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-4 md:px-6 max-w-7xl mx-auto;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary/90 transition-all duration-200 
+    rounded-md px-6 py-3 font-medium shadow-sm hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-200 
+    rounded-md px-6 py-3 font-medium shadow-sm hover:shadow-md;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300;
+    @apply hover:shadow-md;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-r from-primary to-primary/80;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80;
+  }
+
+  .blue-gradient-bg {
+    @apply bg-gradient-to-r from-secondary to-secondary/80;
+  }
+
+  /* Hero image container styles */
+  .hero-image-container {
+    position: relative;
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    aspect-ratio: 11 / 8;
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: transform 0.5s ease-in-out;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 4px solid rgba(251, 81, 118, 0.2);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  .hero-image-container:hover {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+
+  .hero-image-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top right, rgba(251, 81, 118, 0.2), transparent);
+    z-index: 10;
+    pointer-events: none;
+    border-radius: 0.75rem;
+  }
+
+  .hero-image-container::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    background: linear-gradient(to bottom right, rgba(251, 81, 118, 0.3), transparent);
+    z-index: -10;
+    border-radius: 1.125rem;
+    filter: blur(8px);
+    opacity: 0.7;
+  }
+
+  /* 3D flip card styles */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  .circle-badge {
+    @apply absolute flex items-center justify-center rounded-full bg-transparent 
+    border-2 border-dashed border-primary/50 text-xs text-primary/80 uppercase tracking-wider;
+    width: 150px;
+    height: 150px;
+    animation: rotate 20s linear infinite;
+  }
+
+  .circle-badge-inner {
+    @apply absolute flex items-center justify-center rounded-full border border-primary/30;
+    background-color: hsl(var(--secondary));
+    width: 70px;
+    height: 70px;
+  }
+
+  .animated-arrow {
+    @apply absolute;
+    animation: moveArrow 3s ease-in-out infinite;
+  }
+
+  /* Marquee animation for partners section */
+  .animate-marquee {
+    animation: marquee 60s linear infinite;
+  }
+
+  /* Pulsing dot for map */
+  .pulse-dot {
+    position: relative;
+  }
+
+  .pulse-dot::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background: rgba(251, 81, 118, 0.4);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 2s ease-out infinite;
+  }
+
+  /* Custom styling for the Get In Touch section */
+  .country-select-dropdown {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .country-select-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+  }
+
+  .country-select-item:hover {
+    background-color: rgba(139, 195, 74, 0.1);
+  }
+
+  .country-flag {
+    margin-right: 8px;
+    font-size: 1.2em;
+  }
+
+  .country-name {
+    flex: 1;
+  }
+
+  .country-code {
+    color: #666;
+    font-size: 0.9em;
+  }
+
+  /* Form input focus styles */
+  .contact-input:focus {
+    border-color: #8bc34a;
+    box-shadow: 0 0 0 1px rgba(139, 195, 74, 0.2);
+  }
+
+  /* Submit button styles */
+  .submit-button {
+    background-color: #8bc34a;
+    color: white;
+    border-radius: 9999px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .submit-button:hover {
+    background-color: #7cb342;
+  }
+
+  /* Green bullet points */
+  .green-bullet {
+    background-color: #8bc34a;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveArrow {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(20px) translateY(-20px);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-in-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-in-out;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s infinite ease-in-out;
+}
+
+/* Ripple effect for buttons */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform 0.2s, opacity 0.2s ease-in;
+}
+
+.ripple:active:after {
+  transform: scale(0, 0);
+  opacity: 0.3;
+  transition: 0s;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Add transform-style utility */
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+/* Add rotate utilities */
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Line clamp utilities for text truncation */
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Enhanced prose styles for blog articles */
+.prose {
+  color: hsl(var(--foreground));
+  max-width: 65ch;
+}
+
+.prose :where(p):not(:where([class~="not-prose"] *)) {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.prose :where(img):not(:where([class~="not-prose"] *)) {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6):not(:where([class~="not-prose"] *)) {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.prose :where(h2):not(:where([class~="not-prose"] *)) {
+  font-size: 1.5em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.prose :where(h3):not(:where([class~="not-prose"] *)) {
+  font-size: 1.25em;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+}
+
+.prose :where(blockquote):not(:where([class~="not-prose"] *)) {
+  font-weight: 500;
+  font-style: italic;
+  color: hsl(var(--foreground));
+  border-left-width: 0.25rem;
+  border-left-color: hsl(var(--border));
+  quotes: "\201C""\201D""\2018""\2019";
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  padding-left: 1em;
+}
+
+.prose :where(code):not(:where([class~="not-prose"] *)) {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+  font-size: 0.875em;
+}
+
+.prose :where(a):not(:where([class~="not-prose"] *)) {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.prose :where(strong):not(:where([class~="not-prose"] *)) {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+}
+
+/* Keep Google Translate UI hidden; language is controlled by flag buttons. */
+.goog-te-banner-frame.skiptranslate,
+iframe.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+#google_translate_element {
+  display: none !important;
+}
