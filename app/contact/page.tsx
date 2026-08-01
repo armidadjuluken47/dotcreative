@@ -97,7 +97,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="pt-32 pb-12 md:pt-40 md:pb-16">
+      <section className="pt-10 pb-12 md:pt-14 md:pb-16">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>

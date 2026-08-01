@@ -9,6 +9,7 @@ type TranslationKey =
   | "nav.services"
   | "nav.aboutUs"
   | "nav.erpSolutions"
+  | "nav.portfolio"
   | "nav.contactUs"
   | "nav.blog"
   | "nav.bookDemo"
@@ -18,6 +19,7 @@ const translations: Record<LanguageCode, Record<TranslationKey, string>> = {
     "nav.services": "Services",
     "nav.aboutUs": "About Us",
     "nav.erpSolutions": "ERP Solutions",
+    "nav.portfolio": "Portfolio",
     "nav.contactUs": "Contact us",
     "nav.blog": "Blog",
     "nav.bookDemo": "Book a demo",
@@ -26,6 +28,7 @@ const translations: Record<LanguageCode, Record<TranslationKey, string>> = {
     "nav.services": "Services",
     "nav.aboutUs": "A propos",
     "nav.erpSolutions": "Solutions ERP",
+    "nav.portfolio": "Portfolio",
     "nav.contactUs": "Contact",
     "nav.blog": "Blog",
     "nav.bookDemo": "Reserver une demo",
@@ -34,6 +37,7 @@ const translations: Record<LanguageCode, Record<TranslationKey, string>> = {
     "nav.services": "Dienstleistungen",
     "nav.aboutUs": "Uber uns",
     "nav.erpSolutions": "ERP-Losungen",
+    "nav.portfolio": "Portfolio",
     "nav.contactUs": "Kontakt",
     "nav.blog": "Blog",
     "nav.bookDemo": "Demo buchen",
@@ -42,6 +46,7 @@ const translations: Record<LanguageCode, Record<TranslationKey, string>> = {
     "nav.services": "الخدمات",
     "nav.aboutUs": "من نحن",
     "nav.erpSolutions": "حلول ERP",
+    "nav.portfolio": "الأعمال",
     "nav.contactUs": "اتصل بنا",
     "nav.blog": "المدونة",
     "nav.bookDemo": "احجز عرضا",

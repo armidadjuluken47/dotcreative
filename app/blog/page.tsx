@@ -140,7 +140,7 @@ export default function BlogPage() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-background via-background to-accent/10">
+    <section className="pt-10 pb-20 md:pt-14 bg-gradient-to-br from-background via-background to-accent/10">
       <div className="container">
         {/* Header */}
         <div className="text-center mb-12">

@@ -36,7 +36,8 @@ const slides = [
   {
     id: 5,
     title: "Cybersecurity Excellence",
-    description: "Shield your business from cyber threats with our comprehensive security solutions and expert protection services.",
+    description:
+      "Shield your business from cyber threats with our comprehensive security solutions and expert protection services.",
     image: "/images/services/cybersec2.png",
   },
 ]
@@ -67,29 +68,19 @@ export default function HeroSlider() {
   }, [currentSlide, isAnimating])
 
   return (
-    <div className="relative h-[600px] sm:h-[650px] md:h-[700px] lg:h-[750px] overflow-hidden">
-      {/* Semi-transparent gradient overlay to ensure content readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/70 to-background/30 z-0"></div>
+    <div className="relative min-h-[100dvh] -mt-20 pt-20 overflow-hidden flex items-center">
+      <div className="absolute inset-0 bg-gradient-to-b from-background/70 to-background/30 z-0" />
 
       {slides.map((slide, index) => (
         <div
           key={slide.id}
           className={cn(
-            "absolute inset-0 transition-opacity duration-500 ease-in-out",
+            "absolute inset-0 pt-20 transition-opacity duration-500 ease-in-out",
             currentSlide === index ? "opacity-100 z-10" : "opacity-0 z-0",
           )}
         >
-          <div className="container h-full flex flex-col md:flex-row items-center justify-between py-12 md:py-16 lg:py-20">
-            <div className="w-full md:w-1/2 z-20 text-center md:text-left mb-8 md:mb-0 px-4">
-              <div className="flex justify-center md:justify-start mb-6">
-                <Image
-                  src="/images/logo.png"
-                  alt="DotCreative Logo"
-                  width={280}
-                  height={70}
-                  className="w-auto h-12 md:h-16"
-                />
-              </div>
+          <div className="container h-full flex flex-col md:flex-row items-center justify-center md:justify-between gap-8 py-8 md:py-10">
+            <div className="w-full md:w-1/2 z-20 text-center md:text-left px-4">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 tracking-tight">
                 {slide.title}
               </h1>
@@ -117,7 +108,6 @@ export default function HeroSlider() {
         </div>
       ))}
 
-      {/* Slider controls */}
       <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center space-x-2">
         {slides.map((_, index) => (
           <button

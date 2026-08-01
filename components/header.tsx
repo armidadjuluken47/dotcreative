@@ -55,6 +55,7 @@ const serviceItems = [
 const navItems = [
   { key: "nav.aboutUs", href: "/about-us" },
   { key: "nav.erpSolutions", href: "/erp-solutions" },
+  { key: "nav.portfolio", href: "/portfolio" },
   { key: "nav.contactUs", href: "/contact" },
   { key: "nav.blog", href: "/blog" },
 ]

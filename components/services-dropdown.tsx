@@ -92,14 +92,16 @@ export default function ServicesDropdown() {
         {t("nav.services")}
       </Link>
 
-      {/* Horizontal Dropdown Menu */}
+      {/* Viewport-centered mega menu so it never clips off-screen */}
       <div
         className={cn(
-          "absolute left-1/2 transform -translate-x-1/2 mt-2 w-[800px] bg-background border border-border rounded-lg shadow-lg transition-all duration-200 z-50",
-          isOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none",
+          "fixed left-1/2 top-[4.75rem] z-50 w-[min(48rem,calc(100vw-2rem))] rounded-lg border border-border bg-background shadow-lg transition-all duration-200",
+          isOpen
+            ? "pointer-events-auto -translate-x-1/2 translate-y-0 opacity-100"
+            : "pointer-events-none -translate-x-1/2 translate-y-2 opacity-0",
         )}
       >
-        <div className="grid grid-cols-3 gap-2 p-4">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 p-4">
           {serviceItems.map((item) => (
             <Link
               key={item.name}
@@ -110,7 +112,7 @@ export default function ServicesDropdown() {
               )}
             >
               <div className="flex items-center mb-2">
-                <div className="mr-2">{item.icon}</div>
+                <div className="mr-2 shrink-0">{item.icon}</div>
                 <div className="text-sm font-medium">{item.name}</div>
               </div>
               <div className="text-xs text-muted-foreground">{item.description}</div>

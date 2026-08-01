@@ -7,8 +7,7 @@ export default function AboutUsPage() {
   return (
     <>
       {/* Hero Banner Section */}
-      <section className="relative h-[500px] md:h-[600px] overflow-hidden">
-        {/* Banner Image */}
+      <section className="relative min-h-[100dvh] -mt-20 pt-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/images/about-us/team-collaboration.png"
@@ -17,11 +16,10 @@ export default function AboutUsPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-secondary/80 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-secondary/80 mix-blend-multiply" />
         </div>
 
-        {/* Content */}
-        <div className="container relative z-10 h-full flex flex-col justify-center text-white">
+        <div className="container relative z-10 min-h-[calc(100dvh-5rem)] flex flex-col justify-center text-white py-12">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Our Story</h1>
             <p className="text-xl md:text-2xl text-white/90 leading-relaxed">

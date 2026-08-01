@@ -7,18 +7,9 @@ import { Check, Users, Award, Heart } from "lucide-react"
 export default function AboutPage() {
   return (
     <>
-      <section className="pt-32 pb-12 md:pt-40 md:pb-16">
+      <section className="pt-10 pb-12 md:pt-14 md:pb-16">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <div className="flex justify-center mb-6">
-              <Image
-                src="/images/logo.png"
-                alt="DotCreative Logo"
-                width={300}
-                height={80}
-                className="w-auto h-16 md:h-20"
-              />
-            </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">About DotCreative</h1>
             <p className="text-lg text-muted-foreground">
               We're on a mission to empower businesses through innovative technology solutions.
